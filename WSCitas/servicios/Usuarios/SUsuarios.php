@@ -24,3 +24,13 @@ if($method == "POST" &&
     }
 
 }
+
+
+if ($method == "GET" && !empty($_GET["correo"]) && !empty($_GET["clave"])) {
+    $correo = $_GET["correo"];
+    $clave = $_GET["clave"];
+	$data = $usuario-> ConsultarUsuario($correo, $clave);
+	print json_encode($data, JSON_FORCE_OBJECT);
+}
+
+

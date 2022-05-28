@@ -12,4 +12,8 @@ class CUsuario{
     public function InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave){
         return $this->usuario->InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave);
     }
+
+    public function ConsultarUsuario($correo, $clave){
+        return $this->usuario->ConsultarUsuario($correo, $clave);
+    }
 }

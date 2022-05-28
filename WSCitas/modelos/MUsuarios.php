@@ -25,4 +25,18 @@ class MUsuario{
         }
 
     }
+
+    public function ConsultarUsuario($correo, $clave){
+        $sql = 'CALL sp_ConsultarUsuario (?,?)';
+        try{
+            $PrepareStatement = $this->conexion->getPrepareStatement($sql);
+            $PrepareStatement->bindValue(1, $correo, PDO::PARAM_STR);
+            $PrepareStatement->bindValue(2, $clave, PDO::PARAM_STR);
+            $PrepareStatement->execute();
+            return $PrepareStatement->fetchAll();
+        }catch(PDOException $e){
+            echo 'Error: ' . $e;
+            return false;
+        }
+    }
 }
