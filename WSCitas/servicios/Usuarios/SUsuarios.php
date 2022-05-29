@@ -18,9 +18,9 @@ if($method == "POST" &&
 
     $data = $usuario->InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave);
     if ($data) {
-        print json_encode(true, JSON_PRETTY_PRINT);
+        print json_encode(true, JSON_FORCE_OBJECT);
     } else {
-        print json_encode(false, JSON_PRETTY_PRINT);
+        print json_encode(false, JSON_FORCE_OBJECT);
     }
 
 }
@@ -30,7 +30,7 @@ if ($method == "GET" && !empty($_GET["correo"]) && !empty($_GET["clave"])) {
     $correo = $_GET["correo"];
     $clave = $_GET["clave"];
 	$data = $usuario-> ConsultarUsuario($correo, $clave);
-	print json_encode($data, JSON_PRETTY_PRINT);
+	print json_encode($data, JSON_FORCE_OBJECT);
 }
 
 

@@ -7,5 +7,5 @@ $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "GET") {
 
 	$data = $roles->ListarRoles();
-	print json_encode($data, JSON_PRETTY_PRINT);
+	print json_encode($data, JSON_FORCE_OBJECT);
 }

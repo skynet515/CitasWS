@@ -10,14 +10,14 @@ if ($method == "GET"&&
 !empty($_GET["idusuario"])) {
     $idusuario = $_GET["idusuario"];
 	$data = $citas->ListarCitas($idusuario);
-	print json_encode($data, JSON_PRETTY_PRINT);
+	print json_encode($data, JSON_FORCE_OBJECT);
 }
 
 //Obtener el listado de citas pendientes:
 if ($method == "GET") {
-
+    
 	$data = $citas->ListarCitasPendientes();
-	print json_encode($data, JSON_PRETTY_PRINT);
+	print json_encode($data, JSON_FORCE_OBJECT);
 }
 
 if($method == "POST" &&
@@ -35,10 +35,10 @@ if($method == "POST" &&
 
     $data = $citas->crearCita($idusuario, $idconsultorio, $fecha, $hora);
     if ($data) {
-        print json_encode(true, JSON_PRETTY_PRINT);
+        print json_encode(true, JSON_FORCE_OBJECT);
     } else {
      //   print $data;
-        print json_encode(false, JSON_PRETTY_PRINT);
+        print json_encode(false, JSON_FORCE_OBJECT);
     }
 
 }
@@ -62,10 +62,10 @@ if($method == "PUT" &&
 
     $data = $citas->modificarCita($idestado, $idconsultorio, $fecha, $hora,$idcita );
     if ($data) {
-        print json_encode(true, JSON_PRETTY_PRINT);
+        print json_encode(true, JSON_FORCE_OBJECT);
     } else {
      //   print $data;
-        print json_encode(false, JSON_PRETTY_PRINT);
+        print json_encode(false, JSON_FORCE_OBJECT);
     }
 
 }
