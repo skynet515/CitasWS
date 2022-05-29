@@ -7,8 +7,20 @@ class MCita
         $this->conexion = Conexion::getInstance();
     }
 
-    public function ListarCitas(){
-        $sql = 'CALL sp_ListaCitas';
+    public function ListarCitas($idusuario){
+        $sql = 'CALL sp_ListaCitas(?)';
+        try{
+            $PrepareStatement = $this->conexion->getPrepareStatement($sql);
+            $PrepareStatement->bindValue(1, $idusuario, PDO::PARAM_INT);
+            return $PrepareStatement->fetchAll();
+        }catch(PDOException $e){
+            echo 'Error: ' . $e;
+            return false;
+        }
+    }
+
+    public function ListarCitasPendientes(){
+        $sql = 'CALL sp_CitasPendientes';
         try{
             $PrepareStatement = $this->conexion->getPrepareStatement($sql);
             $PrepareStatement->execute();

@@ -4,9 +4,19 @@ include('../../Controladores/CCita.php');
 $citas = new CCitas();
 $method = $_SERVER["REQUEST_METHOD"];
 
+
+//Obtener el listado de citas por usuario
+if ($method == "GET"&&
+!empty($_GET["idusuario"])) {
+    $idusuario = $_GET["idusuario"];
+	$data = $citas->ListarCitas($idusuario);
+	print json_encode($data, JSON_PRETTY_PRINT);
+}
+
+//Obtener el listado de citas pendientes:
 if ($method == "GET") {
 
-	$data = $citas->ListarCitas();
+	$data = $citas->ListarCitasPendientes();
 	print json_encode($data, JSON_PRETTY_PRINT);
 }
 

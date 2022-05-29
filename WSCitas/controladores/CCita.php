@@ -6,8 +6,12 @@ class CCitas{
         $this->cita = new MCita();
     }
 
-    public function ListarCitas(){
-        return $this->cita->ListarCitas();
+    public function ListarCitas($idusuario){
+        return $this->cita->ListarCitas($idusuario);
+    }
+
+    public function ListarCitasPendientes(){
+        return $this->cita->ListarCitasPendientes();
     }
 
     public function crearCita( $idusuario, $idconsultorio, $fecha, $hora){
