@@ -12,6 +12,7 @@ class MCita
         try{
             $PrepareStatement = $this->conexion->getPrepareStatement($sql);
             $PrepareStatement->bindValue(1, $idusuario, PDO::PARAM_INT);
+            $PrepareStatement->execute();
             return $PrepareStatement->fetchAll();
         }catch(PDOException $e){
             echo 'Error: ' . $e;
@@ -22,8 +23,10 @@ class MCita
     public function citaxID($idcita){
         $sql = 'CALL sp_DetalleCita(?)';
         try{
+         //   return http_response_code(404);
             $PrepareStatement = $this->conexion->getPrepareStatement($sql);
             $PrepareStatement->bindValue(1, $idcita, PDO::PARAM_INT);
+            $PrepareStatement->execute();
             return $PrepareStatement->fetchAll();
         }catch(PDOException $e){
             echo 'Error: ' . $e;
