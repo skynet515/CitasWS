@@ -10,6 +10,10 @@ class CCitas{
         return $this->cita->ListarCitas($idusuario);
     }
 
+    public function citaxID($idcita){
+        return $this->cita->citaxID($idcita);
+    }
+
     public function ListarCitasPendientes(){
         return $this->cita->ListarCitasPendientes();
     }

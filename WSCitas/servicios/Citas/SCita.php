@@ -13,6 +13,14 @@ if ($method == "GET"&&
 	print json_encode($data, JSON_FORCE_OBJECT);
 }
 
+//Obtener el detalle de las cita
+if ($method == "GET"&&
+!empty($_GET["idcita"])) {
+    $idcita = $_GET["idcita"];
+	$data = $citas->citaxID($idcita);
+	print json_encode($data, JSON_FORCE_OBJECT);
+}
+
 //Obtener el listado de citas pendientes:
 if ($method == "GET") {
     

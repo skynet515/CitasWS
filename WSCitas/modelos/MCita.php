@@ -19,6 +19,18 @@ class MCita
         }
     }
 
+    public function citaxID($idcita){
+        $sql = 'CALL sp_DetalleCita(?)';
+        try{
+            $PrepareStatement = $this->conexion->getPrepareStatement($sql);
+            $PrepareStatement->bindValue(1, $idcita, PDO::PARAM_INT);
+            return $PrepareStatement->fetchAll();
+        }catch(PDOException $e){
+            echo 'Error: ' . $e;
+            return false;
+        }
+    }
+
     public function ListarCitasPendientes(){
         $sql = 'CALL sp_CitasPendientes';
         try{
