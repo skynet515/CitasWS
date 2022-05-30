@@ -11,14 +11,23 @@ class MUsuario{
     public function InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave){
         try{
 
-            $sql = "CALL sp_InsertarUsuario(?,?,?,?,?)";
+             $sql = 'CALL sp_ValidarCorreo(?)';
             $PrepareStatement = $this->conexion->getPrepareStatement($sql);
-            $PrepareStatement->bindValue(1, $nombres, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(2, $telefono, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(3, $direccion, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(4, $correo, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(5, $clave, PDO::PARAM_STR);
-            return $PrepareStatement->execute();
+            $PrepareStatement->bindValue(1, $correo, PDO::PARAM_STR);
+            $PrepareStatement->execute();
+            $val = $PrepareStatement->fetch();
+            if ($val["correo"] != "") {
+                return false;
+            } else {
+                $sql = "CALL sp_InsertarUsuario(?,?,?,?,?)";
+                $PrepareStatement = $this->conexion->getPrepareStatement($sql);
+                $PrepareStatement->bindValue(1, $nombres, PDO::PARAM_STR);
+                $PrepareStatement->bindValue(2, $telefono, PDO::PARAM_STR);
+                $PrepareStatement->bindValue(3, $direccion, PDO::PARAM_STR);
+                $PrepareStatement->bindValue(4, $correo, PDO::PARAM_STR);
+                $PrepareStatement->bindValue(5, $clave, PDO::PARAM_STR);
+                return $PrepareStatement->execute();
+            } 
 
         }catch(PDOException $e){
             return false;
