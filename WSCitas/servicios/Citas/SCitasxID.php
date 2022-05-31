@@ -13,4 +13,21 @@ if ($method == "GET"&&
 }
 
 
+//CAMBIAR ESTADO DE CITA
+if($method == "PUT" &&
+!empty($_GET["idcita"]))
+{
+
+    $idcita = $_GET["idcita"];
+
+    $data = $citas->cambiarEstadoCita($idcita);
+    if ($data) {
+        print json_encode(true, JSON_FORCE_OBJECT);
+    } else {
+     //   print $data;
+        print json_encode(false, JSON_FORCE_OBJECT);
+    }
+
+
+}
 

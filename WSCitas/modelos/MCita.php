@@ -79,4 +79,16 @@ class MCita
         }
     }
 
+    public function cambiarEstadoCita(  $idcita){
+        try{
+            $sql = "CALL sp_UpdateEstadoCita(?)";
+            $PrepareStatement = $this->conexion->getPrepareStatement($sql);
+            $PrepareStatement->bindValue(1, $idcita, PDO::PARAM_INT);
+            return $PrepareStatement->execute();
+
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
 }

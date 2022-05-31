@@ -24,6 +24,12 @@ class CCitas{
 
     }
 
+    public function cambiarEstadoCita( $idcita){
+        
+        return $this->cita->cambiarEstadoCita($idcita);
+
+    }
+
     public function modificarCita( $idestado, $idconsultorio, $fecha, $hora, $idcita){
         return $this->cita->modificarCita($idestado, $idconsultorio, $fecha, $hora, $idcita);
     }
