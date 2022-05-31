@@ -17,7 +17,7 @@ class MUsuario{
             $PrepareStatement->execute();
             $val = $PrepareStatement->fetch();
             if ($val["correo"] != "") {
-                return false;
+                return "existe";
             } else {
                 $sql = "CALL sp_InsertarUsuario(?,?,?,?,?)";
                 $PrepareStatement = $this->conexion->getPrepareStatement($sql);
