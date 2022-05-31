@@ -63,15 +63,14 @@ class MCita
     }
 
 
-    public function modificarCita( $idestado, $idconsultorio, $fecha, $hora, $idcita){
+    public function modificarCita( $idconsultorio, $fecha, $hora, $idcita){
         try{
-            $sql = "CALL sp_UpdateCitas(?,?,?,?,?)";
+            $sql = "CALL sp_UpdateCitas(?,?,?,?)";
             $PrepareStatement = $this->conexion->getPrepareStatement($sql);
-            $PrepareStatement->bindValue(1, $idestado, PDO::PARAM_INT);
-            $PrepareStatement->bindValue(2, $idconsultorio, PDO::PARAM_INT);
-            $PrepareStatement->bindValue(3, $fecha, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(4, $hora, PDO::PARAM_STR);
-            $PrepareStatement->bindValue(5, $idcita, PDO::PARAM_INT);
+            $PrepareStatement->bindValue(1, $idconsultorio, PDO::PARAM_INT);
+            $PrepareStatement->bindValue(2, $fecha, PDO::PARAM_STR);
+            $PrepareStatement->bindValue(3, $hora, PDO::PARAM_STR);
+            $PrepareStatement->bindValue(4, $idcita, PDO::PARAM_INT);
             return $PrepareStatement->execute();
 
         }catch(PDOException $e){
