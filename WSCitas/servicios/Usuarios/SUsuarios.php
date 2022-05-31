@@ -19,7 +19,7 @@ if (
     $correo = $_POST["correo"];
     $clave = $_POST["clave"];
 
-    $data = true; //$usuario->InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave);
+    $data = $usuario->InsertarUsuario($nombres, $telefono, $direccion, $correo, $clave);
     if ($data) {
         print json_encode(true, JSON_FORCE_OBJECT);
     } else {
