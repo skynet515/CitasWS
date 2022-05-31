@@ -16,8 +16,9 @@ class MUsuario{
             $PrepareStatement->bindValue(1, $correo, PDO::PARAM_STR);
             $PrepareStatement->execute();
             $val = $PrepareStatement->fetch();
-            if ($val["correo"] != "") {
-                return "existe";
+            
+            if ($val["correo"] ??= "") {
+                return false;
             } else {
                 $sql = "CALL sp_InsertarUsuario(?,?,?,?,?)";
                 $PrepareStatement = $this->conexion->getPrepareStatement($sql);
