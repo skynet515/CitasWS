@@ -23,7 +23,13 @@ class CCitas{
         return $this->cita->crearCita($idusuario, $idconsultorio, $fecha, $hora);
 
     }
-    
+
+    public function cambiarEstadoCita( $idcita){
+        
+        return $this->cita->cambiarEstadoCita($idcita);
+
+    }
+
 
     public function modificarCita($idconsultorio, $fecha, $hora, $idcita){
         return $this->cita->modificarCita($idconsultorio, $fecha, $hora, $idcita);
