@@ -14,11 +14,11 @@ if ($method == "GET"&&
 
 
 //CAMBIAR ESTADO DE CITA
-if($method == "PUT" &&
-!empty($_GET["idcita"]))
+if($method == "POST" &&
+!empty($_POST["idcita"]))
 {
 
-    $idcita = $_GET["idcita"];
+    $idcita = $_POST["idcita"];
 
     $data = $citas->cambiarEstadoCita($idcita);
     if ($data) {
